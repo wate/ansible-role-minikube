@@ -1,0 +1,29 @@
+# code: language=ansible
+---
+- name: Install repository dependency packages
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+# - name: Create GPG key directory
+#   ansible.builtin.file:
+#     path: "{{ minikube_apt_key_dest | dirname }}"
+#     state: directory
+#     mode: "0755"
+# - name: Download GPG key
+#   ansible.builtin.get_url:
+#     url: "{{ minikube_apt_key_url }}"
+#     dest: "{{ minikube_apt_key_download_dest }}"
+#     mode: "0644"
+#   register: gpg_key_download_result
+# - name: Convert GPG key
+#   ansible.builtin.command:
+#     cmd: gpg --dearmor -o {{ minikube_apt_key_dest }} {{ minikube_apt_key_download_dest }}
+#   when: gpg_key_download_result is changed
+# - name: Add minikube repository
+#   ansible.builtin.apt_repository:
+#     filename: minikube
+#     repo: deb [signed-by={{ minikube_apt_key_dest }}] https://packages.repository.com/debian {{ ansible_facts.distribution_release }} main
+#     state: present

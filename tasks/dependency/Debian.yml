@@ -1,0 +1,21 @@
+# code: language=ansible
+---
+- name: Install minikube dependency packages
+  ansible.builtin.apt:
+    name: "{{ minikube_dependency_packages | default([]) }}"
+- name: Add minikube group
+  ansible.builtin.group:
+    name: "{{ minikube_group }}"
+    system: true
+- name: Add minikube user
+  ansible.builtin.user:
+    name: "{{ minikube_user }}"
+    group: "{{ minikube_group }}"
+    system: true
+- name: Create install directory
+  ansible.builtin.file:
+    path: "{{ minikube_home }}"
+    owner: "{{ minikube_user }}"
+    group: "{{ minikube_group }}"
+    state: directory
+    mode: "0755"

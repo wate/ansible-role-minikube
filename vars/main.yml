@@ -1,0 +1,12 @@
+---
+minikube_dependency_packages: []
+
+# minikube_apt_key_url: https://packages.repository.com/minikube.gpg.key
+# minikube_apt_key_download_dest: /etc/apt/keyrings/minikube.gpg.key
+# minikube_apt_key_dest: /etc/apt/keyrings/minikube.gpg
+
+# minikube_repo: owner_name/repo_name
+
+minikube_home: /opt/minikube
+minikube_user: minikube
+minikube_group: minikube
